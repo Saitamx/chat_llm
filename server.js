@@ -33,17 +33,20 @@ io.on("connection", (socket) => {
   socket.on("message", async (data) => {
     try {
       // Enviar mensaje al LLM y obtener respuesta
-      const response = await axiosInstance.post(
-        "http://localhost:8080/chat",
-        {
-          thread_id: "thread_qRoL4FOR0mgdupnMs1MDvq7b", // ID de hilo único para este ejemplo
-          message: data.message,
-        }
-      );
+      const response = await axiosInstance.post("http://localhost:8080/chat", {
+        thread_id: "thread_qRoL4FOR0mgdupnMs1MDvq7b", // ID de hilo único para este ejemplo
+        message: data.message,
+      });
 
       // Emitir la respuesta del LLM al cliente
       const llmResponse = response.data.messages.data[0].content[0].text.value;
-      io.emit("message", { user: "LLM", message: llmResponse });
+      const llmResponseColor = response.data.color;
+
+      io.emit("message", {
+        user: "LLM",
+        message: llmResponse,
+        color: llmResponseColor,
+      });
     } catch (error) {
       console.error("Error comunicándose con LLM:", error);
     }

@@ -1,45 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat de Bithia y Mati</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body
-    class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-screen flex justify-center items-center"
-  >
-    <div
-      class="bg-opacity-60 bg-white p-6 rounded-xl shadow-xl w-96 transform rotate-2 animate__animated animate__fadeInDown"
-    >
-      <h1 class="text-center text-3xl mb-4 font-bold text-purple-800">
-        Chat de Bithia y Mati ❤️
-      </h1>
-      <div
-        id="chat-box"
-        class="border p-3 mb-3 h-64 overflow-y-scroll bg-gray-50 rounded space-y-2"
-      >
-        <!-- Los mensajes se insertarán aquí -->
-      </div>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>www ai</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    .section {
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-screen overflow-hidden">
+  <div class="flex flex-wrap justify-between items-center h-screen p-4">
+    <div class="section w-1/2 bg-blue-500" id="section-azul">SECCIÓN AZUL</div>
+    <div class="section w-1/2 bg-red-500" id="section-rojo">SECCIÓN ROJA</div>
+    <div class="section w-1/2 bg-yellow-500" id="section-amarillo">SECCIÓN AMARILLA</div>
+    <div class="section w-1/2 bg-pink-500" id="section-rosado">SECCIÓN ROSADA</div>
+    <div class="bg-opacity-60 bg-white p-6 rounded-xl shadow-xl w-96 transform rotate-2 animate__animated animate__fadeInDown absolute top-1/2 left-1/2" style="transform: translate(-50%, -50%) rotate(2deg);">
+      <h1 class="text-center text-3xl mb-4 font-bold text-purple-800">W3AI ❤️</h1>
+      <div id="chat-box" class="border p-3 mb-3 h-64 overflow-y-scroll bg-gray-50 rounded space-y-2"></div>
       <div class="flex">
-        <input
-          id="message-input"
-          type="text"
-          class="form-control flex-grow p-2 border rounded-l focus:ring focus:ring-purple-200 focus:border-transparent"
-          placeholder="Escribe un mensaje..."
-        />
-        <button
-          id="send-button"
-          class="bg-purple-600 text-white p-2 rounded-r hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 animate__animated animate__pulse"
-        >
-          Enviar
-        </button>
+        <input id="message-input" type="text" class="form-control flex-grow p-2 border rounded-l focus:ring focus:ring-purple-200 focus:border-transparent" placeholder="Escribe un mensaje..." />
+        <button id="send-button" class="bg-purple-600 text-white p-2 rounded-r hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 animate__animated animate__pulse">Enviar</button>
       </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
-  </body>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
