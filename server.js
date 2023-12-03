@@ -16,6 +16,7 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+    "OpenAI-Beta": "assistants=v1",
   },
   maxBodyLength: Infinity,
 });
@@ -34,18 +35,16 @@ io.on("connection", (socket) => {
     try {
       // Enviar mensaje al LLM y obtener respuesta
       const response = await axiosInstance.post("http://localhost:8080/chat", {
-        thread_id: "thread_qRoL4FOR0mgdupnMs1MDvq7b", // ID de hilo único para este ejemplo
+        thread_id: "thread_qRoL4FOR0mgdupnMs1MDvq7b",
         message: data.message,
       });
 
       // Emitir la respuesta del LLM al cliente
       const llmResponse = response.data.messages.data[0].content[0].text.value;
-      const llmResponseColor = response.data.color;
-
       io.emit("message", {
         user: "LLM",
         message: llmResponse,
-        color: llmResponseColor,
+        color: response.data.color,
       });
     } catch (error) {
       console.error("Error comunicándose con LLM:", error);
