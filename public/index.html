@@ -3,71 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat de Bithia y Mati</title>
+  <title>w3ai</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <style>
-    .section {
-      height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 2rem;
-      position: relative;
-    }
-
-    .section .messages {
-      max-height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-      margin-bottom: 20px;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 10px;
-    }
-
-    .message {
-      background: rgba(255, 255, 255, 0.8);
-      margin-bottom: 5px;
-      padding: 5px;
-      border-radius: 5px;
-    }
-  </style>
 </head>
-<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 h-screen overflow-hidden">
-  <div class="flex flex-wrap justify-between items-center h-screen p-4">
-    <div class="section w-1/2 bg-blue-500" id="azul">
-      <div class="messages"></div>
-      SECCIÓN AZUL
-    </div>
-    <div class="section w-1/2 bg-red-500" id="rojo">
-      <div class="messages"></div>
-      SECCIÓN ROJA
-    </div>
-    <div class="section w-1/2 bg-yellow-500" id="amarillo">
-      <div class="messages"></div>
-      SECCIÓN AMARILLA
-    </div>
-    <div class="section w-1/2 bg-pink-500" id="rosado">
-      <div class="messages"></div>
-      SECCIÓN ROSADA
-    </div>
-    <div class="bg-opacity-60 bg-white p-6 rounded-xl shadow-xl w-96 transform rotate-2 animate__animated animate__fadeInDown absolute top-1/2 left-1/2" style="transform: translate(-50%, -50%) rotate(2deg);">
-      <h1 class="text-center text-3xl mb-4 font-bold text-purple-800">
-        W3AI ❤️
-      </h1>
-      <div id="chat-box" class="border p-3 mb-3 h-64 overflow-y-scroll bg-gray-50 rounded space-y-2">
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
+  <div class="flex flex-col items-center justify-start min-h-screen p-4">
+    <div id="chat-section" class="bg-white p-4 rounded-xl shadow-xl w-full mb-4">
+      <div id="chat-box" class="border p-2 mb-2 overflow-y-scroll bg-gray-50 rounded h-32">
         <!-- Los mensajes se insertarán aquí -->
       </div>
       <div class="flex">
-        <input id="message-input" type="text" class="form-control flex-grow p-2 border rounded-l focus:ring focus:ring-purple-200 focus:border-transparent" placeholder="Escribe un mensaje..." />
-        <button id="send-button" class="bg-purple-600 text-white p-2 rounded-r hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 animate__animated animate__pulse">
+        <input id="message-input" type="text" class="flex-grow p-2 border rounded-l focus:ring focus:ring-purple-200 focus:border-transparent" placeholder="Escribe un mensaje..." />
+        <button id="send-button" class="bg-purple-600 text-white p-2 rounded-r hover:bg-purple-700 focus:outline-none">
           Enviar
         </button>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+      <div class="section bg-blue-500" id="1">
+        Menú y Opciones de Comida
+      </div>
+      <div class="section bg-red-500" id="2">
+        Precios y Promociones
+      </div>
+      <div class="section bg-yellow-500" id="3">
+        Reservas y Disponibilidad de Mesas
+      </div>
+      <div class="section bg-pink-500" id="4">
+        Políticas y Servicios Adicionales
       </div>
     </div>
   </div>

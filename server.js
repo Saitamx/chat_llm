@@ -2,7 +2,6 @@ const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
-const functions = require("./functions");
 require("dotenv").config();
 
 const app = express();
@@ -21,30 +20,23 @@ const axiosInstance = axios.create({
   maxBodyLength: Infinity,
 });
 
-let assistantId;
-
-// Crear un asistente LLM al iniciar el servidor
-functions.createAssistant(axiosInstance).then((id) => {
-  assistantId = id;
-});
-
 io.on("connection", (socket) => {
   console.log("Usuario conectado");
 
-  socket.on("message", async (data) => {
+  socket.on("message", async ({ message, categoryCode }) => {
     try {
       // Enviar mensaje al LLM y obtener respuesta
-      const response = await axiosInstance.post("http://localhost:8080/chat", {
-        thread_id: "thread_qRoL4FOR0mgdupnMs1MDvq7b",
-        message: data.message,
-      });
+      const response = await axiosInstance.post(
+        "https://quer-assistant--saitamx1.repl.co/newMessage",
+        { thread_id: "thread_BxYTAKAE4hiU8Q5ZKy18QmuM", categoryCode, message }
+      );
 
       // Emitir la respuesta del LLM al cliente
       const llmResponse = response.data.messages.data[0].content[0].text.value;
       io.emit("message", {
         user: "LLM",
         message: llmResponse,
-        color: response.data.color,
+        categoryCode: response.data.categoryCode,
       });
     } catch (error) {
       console.error("Error comunicándose con LLM:", error);
